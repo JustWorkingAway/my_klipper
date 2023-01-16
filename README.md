@@ -18,3 +18,10 @@ If using VS Code remote development to load printer.cfg
     
 BL Touch probe as Z must all connect to probe port
   none connected to Z stop as in Marlin
+  My BL Touch wiring
+    Signal  Blk
+    Ground  Blu
+    Signal  Grn
+    +5 V    Yel
+    Ground  Org
+
