@@ -1,0 +1,16 @@
+.cache
+.gnupg
+.local
+.octoprint
+.vscode-server
+.bash_history
+.bash_logout
+.bashrc
+.gitconfig
+.profile
+.wget-hsts
+klipper
+klippy-env
+mjpg-streamer
+OctoPrint
+oprint
