@@ -1,0 +1,6 @@
+To connect printer when turned on - Also reloads printer.cfg
+restart
+
+To reset webcam
+sudo service webcamd restart
+
