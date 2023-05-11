@@ -4,3 +4,41 @@ restart
 To reset webcam
 sudo service webcamd restart
 
+Calibrade Z Offset
+To calibrate the Z offset with Klipper and BLTouch, we first start by homing all axis:
+
+G28 #home all axis
+
+Next we will send a probe calibrate command to tell the printer we want to calibrate the Z axis:
+
+PROBE_CALIBRATE
+
+Once this command is entered the printer will attempt to discover the Z offset and report back what it thinks it should be:
+
+Z position: ?????? –> 6.025 <– ??????
+
+We than need to start the manual calibration steps.  Grab a piece of paper and slide it between the nozzle and print bed and start lowering the nozzle until you feel a slight resistance when moving the paper back and forth.  To lower the nozzle enter the below command.  Adjust the value and repeat until you feel a slight resistance:
+
+TESTZ Z=-.1
+
+Once you feel a slight resistance, type accept to save your values:
+
+ACCEPT
+
+bltouch: z_offset: 1.099
+The SAVE_CONFIG command will update the printer config file
+with the above and restart the printer.
+
+Now type SAVE_CONFIG and restart the printer to load the new config.
+
+Next we need to verify the accuracy of the new settings.
+
+G28 #home all axis
+
+PROBE_ACCURACY
+
+The printer will now run a series of tests to verify the repeatability of the probe results.
+
+probe accuracy results: maximum 1.104000, minimum 1.091500, range 0.012500, average 1.099500, median 1.100250, standard deviation 0.004717
+
+We are looking for a range of 0.0125 or better, but not worse than 0.025.  The Z Height is now calibrated.  For additional reading please reference the Klipper docs
